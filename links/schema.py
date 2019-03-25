@@ -8,7 +8,6 @@ class LinkType(DjangoObjectType):
     class Meta:
         model = Link
 
-
 class Query(graphene.ObjectType):
     links = graphene.List(LinkType)
 
