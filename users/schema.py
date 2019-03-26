@@ -33,3 +33,10 @@ class CreateUser(graphene.Mutation):
 class Mutation(graphene.ObjectType):
     """Creates Mutation class with a filed to be resolved (create_user)"""
     create_user = CreateUser.Field()
+
+class Query(graphene.ObjectType):
+    """Defines query to list all users"""
+    users = graphene.List(UserType)
+
+    def resolve_users(self, info):
+        return get_user_model().objects.all()
