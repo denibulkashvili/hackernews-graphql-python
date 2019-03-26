@@ -28,6 +28,8 @@ class CreateUser(graphene.Mutation):
         user.set_password(password)
         user.save()
 
+        return CreateUser(user=user)
+
 class Mutation(graphene.ObjectType):
     """Creates Mutation class with a filed to be resolved (create_user)"""
     create_user = CreateUser.Field()
